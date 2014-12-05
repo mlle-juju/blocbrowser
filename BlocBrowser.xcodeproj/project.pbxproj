@@ -13,6 +13,7 @@
 		934727811A1D93EB0066465C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 934727801A1D93EB0066465C /* Images.xcassets */; };
 		934727901A1D93EB0066465C /* BlocBrowserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9347278F1A1D93EB0066465C /* BlocBrowserTests.m */; };
 		9347279B1A1D99220066465C /* BLCWebBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9347279A1A1D99220066465C /* BLCWebBrowserViewController.m */; };
+		93C9FC971A3016E700514A26 /* BLCAwesomeFloatingToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C9FC961A3016E700514A26 /* BLCAwesomeFloatingToolbar.m */; };
 		93CDB78D1A1EC5AA00136210 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93CDB78C1A1EC5AA00136210 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,8 @@
 		9347278F1A1D93EB0066465C /* BlocBrowserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlocBrowserTests.m; sourceTree = "<group>"; };
 		934727991A1D99220066465C /* BLCWebBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLCWebBrowserViewController.h; sourceTree = "<group>"; };
 		9347279A1A1D99220066465C /* BLCWebBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCWebBrowserViewController.m; sourceTree = "<group>"; };
+		93C9FC951A3016E700514A26 /* BLCAwesomeFloatingToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLCAwesomeFloatingToolbar.h; sourceTree = "<group>"; };
+		93C9FC961A3016E700514A26 /* BLCAwesomeFloatingToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCAwesomeFloatingToolbar.m; sourceTree = "<group>"; };
 		93CDB78C1A1EC5AA00136210 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,6 +90,8 @@
 				934727781A1D93EB0066465C /* AppDelegate.m */,
 				934727991A1D99220066465C /* BLCWebBrowserViewController.h */,
 				9347279A1A1D99220066465C /* BLCWebBrowserViewController.m */,
+				93C9FC951A3016E700514A26 /* BLCAwesomeFloatingToolbar.h */,
+				93C9FC961A3016E700514A26 /* BLCAwesomeFloatingToolbar.m */,
 				9347277A1A1D93EB0066465C /* ViewController.h */,
 				9347277B1A1D93EB0066465C /* ViewController.m */,
 				934727801A1D93EB0066465C /* Images.xcassets */,
@@ -222,6 +227,7 @@
 			files = (
 				9347277C1A1D93EB0066465C /* ViewController.m in Sources */,
 				934727791A1D93EB0066465C /* AppDelegate.m in Sources */,
+				93C9FC971A3016E700514A26 /* BLCAwesomeFloatingToolbar.m in Sources */,
 				9347279B1A1D99220066465C /* BLCWebBrowserViewController.m in Sources */,
 				934727761A1D93EB0066465C /* main.m in Sources */,
 			);
