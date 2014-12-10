@@ -199,6 +199,11 @@
     
 }
 
+- (void) floatingToolbar:(BLCAwesomeFloatingToolbar *)toolbar didTryToScaleToSize:(CGFloat)newScale
+{
+    CGAffineTransform newTransform = CGAffineTransformMakeScale(newScale,newScale);
+    toolbar.transform = newTransform;
+}
 
 #pragma mark - Miscellaneous
 
