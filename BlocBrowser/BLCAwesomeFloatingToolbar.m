@@ -17,7 +17,7 @@
 @property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
 @property (nonatomic, strong) UIPanGestureRecognizer *panGesture;
 @property (nonatomic, strong) UIPinchGestureRecognizer *pinchGesture; //I added this here 12.6.14 so I can make the toolbar smaller or bigger
-
+@property (nonatomic, strong) UILongPressGestureRecognizer *longPressGesture;
 
 @end
 
@@ -71,7 +71,9 @@
         self.pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchFired:)];
         [self addGestureRecognizer:self.pinchGesture];
         
-    
+        self.longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressFired:)];
+        [self addGestureRecognizer:self.longPressGesture];
+        
         
     }
     
@@ -173,7 +175,7 @@
     }
 }
 
-#pragma Pinch Gesture
+#pragma Pinch Gesture & Long Press Gesture
 //11.6.14 I implement the pinch gesture method below -
 - (void) pinchFired:(UIPinchGestureRecognizer *)recognizer {
     CGFloat newScaleAmount = [recognizer scale];
@@ -191,7 +193,20 @@
 }
     
     
-
+- (void) longPressFired:(UILongPressGestureRecognizer *)recognizer {
+    if (recognizer.state == UIGestureRecognizerStateRecognized) {
+        CGPoint longPressLocation = [recognizer locationInView:self];
+        UIView *longPressView = [self hitTest:longPressLocation withEvent:nil];
+        
+        if ([self.labels containsObject:longPressView]) {
+            if ([self.delegate respondsToSelector:@selector(floatingToolbar:didSelectButtonWithTitle:)]) {
+                [self.delegate floatingToolbar:self didSelectButtonWithTitle:((UILabel *)longPressView).text];
+            }
+            
+        }
+    }
+    
+}
 
 
 @end
