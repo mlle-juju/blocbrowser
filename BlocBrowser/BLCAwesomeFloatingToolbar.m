@@ -68,7 +68,7 @@
         [self addGestureRecognizer:self.panGesture];
         
         //On lines 70&71, I tell the gesture recognizer which to call the pinchFired method when a pinch is detected
-        self.pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:(pinchFired:)];
+        self.pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchFired:)];
         [self addGestureRecognizer:self.pinchGesture];
         
     
@@ -105,7 +105,7 @@
             // 1 or 3, so on the right
             labelX = CGRectGetWidth(self.bounds) / 2;
         }
-        
+
         thisLabel.frame = CGRectMake(labelX, labelY, labelWidth, labelHeight);
     }
 }
@@ -176,9 +176,18 @@
 #pragma Pinch Gesture
 //11.6.14 I implement the pinch gesture method below -
 - (void) pinchFired:(UIPinchGestureRecognizer *)recognizer {
-    if (recognizer.state == UIGestureRecognizerStateEnded)
-        CGRect newBounds = [recognizer ]
-    
+    CGFloat newScaleAmount = [recognizer scale];
+
+    if (recognizer.state == UIGestureRecognizerStateChanged) {
+        if ([self.delegate respondsToSelector:@selector(floatingToolbar:didTryToScaleToSize:)]) {
+            [self.delegate floatingToolbar:self didTryToScaleToSize:newScaleAmount];
+        }
+        NSLog(@"New scale: %.2f",newScaleAmount);
+    } else if (recognizer.state == UIGestureRecognizerStateEnded) {
+        // restore normal scale
+        self.transform = CGAffineTransformIdentity;
+        NSLog(@"New scale: 1.00");
+    }
 }
     
     
