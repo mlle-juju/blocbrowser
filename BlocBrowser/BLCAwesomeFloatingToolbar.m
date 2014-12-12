@@ -18,6 +18,7 @@
 @property (nonatomic, strong) UIPanGestureRecognizer *panGesture;
 @property (nonatomic, strong) UIPinchGestureRecognizer *pinchGesture; //I added this here 12.6.14 so I can make the toolbar smaller or bigger
 @property (nonatomic, strong) UILongPressGestureRecognizer *longPressGesture;
+@property (nonatomic, assign) NSInteger rotationIndex;
 
 @end
 
@@ -28,6 +29,7 @@
     self = [super init];
     
     if (self) {
+        self.rotationIndex = 1;
         
         // Save the titles, and set the 4 colors
         self.currentTitles = titles;
@@ -199,8 +201,8 @@
         UIView *longPressView = [self hitTest:longPressLocation withEvent:nil];
         
         if ([self.labels containsObject:longPressView]) {
-            if ([self.delegate respondsToSelector:@selector(floatingToolbar:didSelectButtonWithTitle:)]) {
-                [self.delegate floatingToolbar:self didSelectButtonWithTitle:((UILabel *)longPressView).text];
+            if ([self.delegate respondsToSelector:@selector(floatingToolbar:didLongPressButtonWithTitle:)]) {
+                [self.delegate floatingToolbar:self didLongPressButtonWithTitle:((UILabel *)longPressView).text];
             }
             
         }
@@ -208,5 +210,28 @@
     
 }
 
+- (void) rotateColors {
+    self.colors = @[[UIColor colorWithRed:199/255.0 green:158/255.0 blue:203/255.0 alpha:1],
+                    [UIColor colorWithRed:255/255.0 green:105/255.0 blue:97/255.0 alpha:1],
+                    [UIColor colorWithRed:222/255.0 green:165/255.0 blue:164/255.0 alpha:1],
+                    [UIColor colorWithRed:255/255.0 green:179/255.0 blue:71/255.0 alpha:1]];
+    
+    NSMutableArray *labelsArray = [[NSMutableArray alloc] init];
+    
+    /*
+    for (NSInteger i = 0; i < 50; i++) {
+        NSLog(@"i = %li / i %% 2 = %li / i mod 11 = %li / i mod 20 = %li",i,i%2,i%11,i%20);
+    }
+    */
+    
+    // Make the 4 labels
+    for (NSInteger row = 0; row<=3; row++) {
+        UILabel *label = (UILabel*)self.subviews[row];
+        UIColor *colorForThisLabel = [self.colors objectAtIndex:(row + self.rotationIndex)%4];
+        NSLog(@"Rotated colors to position %li",(row + self.rotationIndex)%4);
+        label.backgroundColor = colorForThisLabel;
+        }
+    self.rotationIndex++;
+}
 
 @end

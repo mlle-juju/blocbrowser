@@ -205,6 +205,13 @@
     toolbar.transform = newTransform;
 }
 
+- (void) floatingToolbar:(BLCAwesomeFloatingToolbar *)toolbar didLongPressButtonWithTitle:(NSString *)title {
+    
+    [toolbar rotateColors];
+    NSLog(@"Long Pressed %@",title);
+}
+
+
 #pragma mark - Miscellaneous
 
 - (void) updateButtonsAndTitle {
